@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Framework.LightInject</id>
+        <version>1.0.0</version>
+        <authors>Amr Yousef</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Framework LightInject</description>
+        <dependencies>
+            <dependency id="LightInject" version="4.0.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Framework.LightInject\bin\Release\Framework.LightInject.dll" target="lib\net46\Framework.LightInject.dll" />
+    </files>
+</package>

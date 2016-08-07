@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Framework.EntityFramework</id>
+        <version>1.0.0</version>
+        <authors>Amr Yousef</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Framework EntityFramework</description>
+        <dependencies>
+            <dependency id="EntityFramework" version="6.1.3" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Framework.EntityFramework\bin\Release\Framework.EntityFramework.dll" target="lib\net46\Framework.EntityFramework.dll" />
+    </files>
+</package>

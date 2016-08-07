@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Framework.Core</id>
+        <version>1.0.0</version>
+        <authors>Amr Yousef</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Framework Core</description>
+    </metadata>
+    <files>
+        <file src="..\Framework.Core\bin\Release\Framework.Core.dll" target="lib\net46\Framework.Core.dll" />
+    </files>
+</package>
