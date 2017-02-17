@@ -2,7 +2,7 @@
 
 namespace Framework.Core.CQRS
 {
-    public class BaseQuery : BaseMessage, IQuery
+    public class Query : BaseMessage, IQuery
     {
     }
 }
