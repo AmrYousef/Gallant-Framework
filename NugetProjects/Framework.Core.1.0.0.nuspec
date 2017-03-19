@@ -8,6 +8,6 @@
         <description>Framework Core</description>
     </metadata>
     <files>
-        <file src="..\Framework.Core\bin\Release\Framework.Core.dll" target="lib\net46\Framework.Core.dll" />
+        <file src="..\Framework.Core\bin\Release\netcoreapp1.1\Framework.Core.dll" target="lib\net46\Framework.Core.dll" />
     </files>
 </package>
