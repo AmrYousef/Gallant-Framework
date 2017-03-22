@@ -11,6 +11,9 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\Framework.EntityFramework\bin\Release\Framework.EntityFramework.dll" target="lib\net46\Framework.EntityFramework.dll" />
+        <file src="..\Framework.EntityFramework\bin\Release\netstandard1.6\Framework.EntityFramework.dll" target="lib\netstandard1.6\Framework.EntityFramework.dll" />
+        <file src="..\Framework.EntityFramework\bin\Release\netstandard1.6\Framework.EntityFramework.dll" target="lib\net46\Framework.EntityFramework.dll" />
+        <file src="..\Framework.EntityFramework\bin\Release\netstandard1.6\Framework.EntityFramework.dll" target="lib\netcoreapp1.1\Framework.EntityFramework.dll" />
     </files>
 </package>
+

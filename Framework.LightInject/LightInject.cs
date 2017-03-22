@@ -3126,7 +3126,7 @@ namespace Framework.LightInject.LightInject
             ServiceRegistration serviceRegistration, DecoratorRegistration openGenericDecorator)
         {
             var implementingType = openGenericDecorator.ImplementingType;
-            Type[] genericTypeArguments = serviceRegistration.ServiceType.GetGenericTypeArguments();
+            var genericTypeArguments = serviceRegistration.ServiceType.GetGenericTypeArguments();
             var closedGenericDecoratorType = implementingType.MakeGenericType(genericTypeArguments);
 
             var decoratorInfo = new DecoratorRegistration
@@ -3826,8 +3826,8 @@ namespace Framework.LightInject.LightInject
             Func<Type, Delegate> valueFactoryDelegate)
         {
             var actualServiceType = serviceType.GetGenericTypeArguments()[0];
-            Type funcType = actualServiceType.GetFuncType();
-            ConstructorInfo lazyConstructor = actualServiceType.GetLazyConstructor();
+            var funcType = actualServiceType.GetFuncType();
+            var lazyConstructor = actualServiceType.GetLazyConstructor();
             var getInstanceDelegate = valueFactoryDelegate(actualServiceType);
             var constantIndex = constants.Add(getInstanceDelegate);
 
@@ -3862,7 +3862,7 @@ namespace Framework.LightInject.LightInject
             if (openGenericServiceRegistration == null)
                 return null;
 
-            Type[] closedGenericArguments = closedGenericServiceType.GetGenericTypeArguments();
+            var closedGenericArguments = closedGenericServiceType.GetGenericTypeArguments();
 
             var closedGenericImplementingType = TryMakeGenericType(
                 openGenericServiceRegistration.ImplementingType,
@@ -5892,7 +5892,7 @@ namespace Framework.LightInject.LightInject
             foreach (var bucket in previous.Buckets)
             foreach (var keyValue in bucket.InOrder())
             {
-                int hashCode = keyValue.Key.GetHashCode();
+                var hashCode = keyValue.Key.GetHashCode();
                 var bucketIndex = hashCode & (Divisor - 1);
                 Buckets[bucketIndex] = Buckets[bucketIndex].Add(keyValue.Key, keyValue.Value);
             }

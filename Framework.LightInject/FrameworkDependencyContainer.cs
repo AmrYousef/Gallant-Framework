@@ -4,13 +4,14 @@ using Framework.Core.CQRS.Core;
 using Framework.Core.DependencyContainer;
 using Framework.Core.Securtiy;
 using Framework.LightInject.LightInject;
+
 //using LightInject;
 
 namespace Framework.LightInject
 {
-    public class LightInjectContainer : ServiceContainer, IDependencyContainer
+    public class FrameworkDependencyContainer : ServiceContainer, IDependencyContainer
     {
-        public LightInjectContainer()
+        public FrameworkDependencyContainer()
         {
             base.Register<IDependencyContainer>(d => this);
         }

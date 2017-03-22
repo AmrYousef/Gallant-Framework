@@ -11,6 +11,8 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\Framework.LightInject\bin\Release\Framework.LightInject.dll" target="lib\net46\Framework.LightInject.dll" />
+        <file src="..\Framework.LightInject\bin\Release\netstandard1.6\Framework.LightInject.dll" target="lib\netstandard1.6\Framework.LightInject.dll" />
+        <file src="..\Framework.LightInject\bin\Release\netstandard1.6\Framework.LightInject.dll" target="lib\net46\Framework.LightInject.dll" />
+        <file src="..\Framework.LightInject\bin\Release\netstandard1.6\Framework.LightInject.dll" target="lib\netcoreapp1.1\Framework.LightInject.dll" />
     </files>
 </package>

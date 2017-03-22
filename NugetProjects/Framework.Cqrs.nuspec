@@ -8,6 +8,8 @@
         <description>Framework Cqrs</description>
     </metadata>
     <files>
-        <file src="..\Framework.Cqrs\bin\Release\Framework.Cqrs.dll" target="lib\net46\Framework.Cqrs.dll" />
+        <file src="..\Framework.Cqrs\bin\Release\netstandard1.6\Framework.Cqrs.dll" target="lib\netstandard1.6\Framework.Cqrs.dll" />
+        <file src="..\Framework.Cqrs\bin\Release\netstandard1.6\Framework.Cqrs.dll" target="lib\net46\Framework.Cqrs.dll" />
+        <file src="..\Framework.Cqrs\bin\Release\netstandard1.6\Framework.Cqrs.dll" target="lib\netcoreapp1.1\Framework.Cqrs.dll" />
     </files>
 </package>
