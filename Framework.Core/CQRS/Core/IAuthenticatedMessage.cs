@@ -1,5 +1,5 @@
-﻿using Framework.Core.Securtiy;
-using System;
+﻿using System;
+using Framework.Core.Securtiy;
 
 namespace Framework.Core.CQRS.Core
 {

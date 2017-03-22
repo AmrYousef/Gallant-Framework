@@ -6,8 +6,8 @@ namespace Framework.Core.Data
 {
     public abstract class BaseUnitOfWork : IUnitOfWork
     {
-        private IWriteContext _context;
-        private IDependencyContainer _dependencyContainer;
+        private readonly IWriteContext _context;
+        private readonly IDependencyContainer _dependencyContainer;
 
         public BaseUnitOfWork(IWriteContext context, IDependencyContainer dependencyContainer)
         {
@@ -21,7 +21,7 @@ namespace Framework.Core.Data
         }
 
         public TWriteRepository Repository<TWriteRepository, TEntity>()
-            where TWriteRepository : class , IWriteRepository<TEntity>
+            where TWriteRepository : class, IWriteRepository<TEntity>
             where TEntity : BaseEntity
         {
             var repo = _dependencyContainer.Resolve<TWriteRepository>();

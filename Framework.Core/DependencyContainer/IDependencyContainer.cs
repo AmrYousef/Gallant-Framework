@@ -1,7 +1,7 @@
-﻿using Framework.Core.CQRS.Core;
-using Framework.Core.Securtiy;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Framework.Core.CQRS.Core;
+using Framework.Core.Securtiy;
 
 namespace Framework.Core.DependencyContainer
 {
@@ -36,7 +36,8 @@ namespace Framework.Core.DependencyContainer
             where TQueryHandler : class, IQueryHandler<TQuery, TResponse>
             where TResponse : IQueryResponse;
 
-        void RegisterScopeLifetimeObject<TService, TImplementation>() where TImplementation : class, TService where TService : class;
+        void RegisterScopeLifetimeObject<TService, TImplementation>() where TImplementation : class, TService
+            where TService : class;
 
         IDisposable BeginScope();
 

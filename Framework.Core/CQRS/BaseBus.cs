@@ -1,6 +1,6 @@
-﻿using Framework.Core.CQRS.Core;
+﻿using System;
+using Framework.Core.CQRS.Core;
 using Framework.Core.DependencyContainer;
-using System;
 
 namespace Framework.Core.CQRS
 {
@@ -23,10 +23,8 @@ namespace Framework.Core.CQRS
                 {
                     var authenticatedCommand = message as IAuthenticatedMessage;
                     foreach (var securityRule in _securityRules)
-                    {
                         if (!securityRule.IsAuthorized(authenticatedCommand.Identity))
                             throw new UnauthorizedAccessException();
-                    }
                 }
             }
         }

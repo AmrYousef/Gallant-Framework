@@ -7,9 +7,6 @@ namespace Framework.Security
 {
     public class FrameworkClaimsIdentity
     {
-        public Guid UserId { get; private set; }
-        private IEnumerable<Claim> ClaimSet { get; set; }
-
         public FrameworkClaimsIdentity(Guid userId, IEnumerable<Claim> claimSet)
         {
             UserId = userId;
@@ -21,28 +18,22 @@ namespace Framework.Security
             UserId = userId;
         }
 
+        public Guid UserId { get; private set; }
+        private IEnumerable<Claim> ClaimSet { get; }
+
         public IEnumerable<Claim> Roles
         {
-            get
-            {
-                return ClaimSet.Where(c => c.Type == ClaimTypes.Role);
-            }
+            get { return ClaimSet.Where(c => c.Type == ClaimTypes.Role); }
         }
 
         public Claim Name
         {
-            get
-            {
-                return ClaimSet.FirstOrDefault(c => c.Type == ClaimTypes.Name);
-            }
+            get { return ClaimSet.FirstOrDefault(c => c.Type == ClaimTypes.Name); }
         }
 
         public Claim Email
         {
-            get
-            {
-                return ClaimSet.FirstOrDefault(c => c.Type == ClaimTypes.Email);
-            }
+            get { return ClaimSet.FirstOrDefault(c => c.Type == ClaimTypes.Email); }
         }
     }
 }

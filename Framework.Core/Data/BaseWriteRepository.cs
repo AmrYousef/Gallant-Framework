@@ -1,17 +1,13 @@
-﻿using Framework.Core.Data.Core;
-using Framework.Core.Domain;
-using System;
+﻿using System;
 using System.Linq;
+using Framework.Core.Data.Core;
+using Framework.Core.Domain;
 
 namespace Framework.Core.Data
 {
     public abstract class BaseWriteRepository<T> : BaseRepository<T>, IWriteRepository<T> where T : BaseEntity
     {
         private IWriteContext _context;
-
-        public BaseWriteRepository()
-        {
-        }
 
         public void InitRepository(IWriteContext context)
         {

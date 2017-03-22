@@ -1,6 +1,6 @@
-﻿using Framework.Core.CQRS;
+﻿using System.Linq;
+using Framework.Core.CQRS;
 using Framework.Core.Data.Core;
-using System.Linq;
 
 namespace Framework.EntityFramework
 {

@@ -1,7 +1,7 @@
-﻿using Framework.Core.CQRS;
+﻿using System;
+using Framework.Core.CQRS;
 using Framework.Core.CQRS.Core;
 using Framework.Core.DependencyContainer;
-using System;
 
 namespace Framework.CQRS
 {

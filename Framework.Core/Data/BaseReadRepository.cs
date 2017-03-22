@@ -1,5 +1,5 @@
-﻿using Framework.Core.CQRS;
-using System.Linq;
+﻿using System.Linq;
+using Framework.Core.CQRS;
 
 namespace Framework.Core.Data
 {

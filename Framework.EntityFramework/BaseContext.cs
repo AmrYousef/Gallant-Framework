@@ -1,6 +1,6 @@
-﻿using Framework.Core.Data.Core;
+﻿using System.Linq;
+using Framework.Core.Data.Core;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace Framework.EntityFramework
 {
@@ -12,7 +12,7 @@ namespace Framework.EntityFramework
 
         IQueryable<T> IReadContext.Set<T>()
         {
-            return this.Set<T>();
+            return Set<T>();
         }
     }
 }

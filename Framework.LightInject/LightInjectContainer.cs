@@ -1,10 +1,10 @@
-﻿using Framework.Core.CQRS.Core;
+﻿using System;
+using System.Collections.Generic;
+using Framework.Core.CQRS.Core;
 using Framework.Core.DependencyContainer;
 using Framework.Core.Securtiy;
 using Framework.LightInject.LightInject;
 //using LightInject;
-using System;
-using System.Collections.Generic;
 
 namespace Framework.LightInject
 {
@@ -15,7 +15,8 @@ namespace Framework.LightInject
             base.Register<IDependencyContainer>(d => this);
         }
 
-        public new void Register<TService, TImplementation>() where TImplementation : class, TService where TService : class
+        public new void Register<TService, TImplementation>() where TImplementation : class, TService
+            where TService : class
         {
             base.Register<TService, TImplementation>();
         }
@@ -35,18 +36,18 @@ namespace Framework.LightInject
 
         public ICommandHandler<T> ResolveCommandHandler<T>() where T : ICommand
         {
-            return base.GetInstance<ICommandHandler<T>>() as ICommandHandler<T>;
+            return GetInstance<ICommandHandler<T>>();
         }
 
         public IQueryHandler<T, TReponse> ResolveQueryHandler<T, TReponse>()
             where T : IQuery where TReponse : IQueryResponse
         {
-            return base.GetInstance<IQueryHandler<T, TReponse>>() as IQueryHandler<T, TReponse>;
+            return GetInstance<IQueryHandler<T, TReponse>>();
         }
 
         public T Resolve<T>() where T : class
         {
-            return base.GetInstance<T>();
+            return GetInstance<T>();
         }
 
         public new IDisposable BeginScope()
@@ -54,7 +55,8 @@ namespace Framework.LightInject
             return base.BeginScope();
         }
 
-        public void RegisterScopeLifetimeObject<TService, TImplementation>() where TImplementation : class, TService where TService : class
+        public void RegisterScopeLifetimeObject<TService, TImplementation>() where TImplementation : class, TService
+            where TService : class
         {
             base.Register<TService, TImplementation>(new PerScopeLifetime());
         }
@@ -66,12 +68,12 @@ namespace Framework.LightInject
 
         public object GetService(Type serviceType)
         {
-            return base.GetInstance(serviceType);
+            return GetInstance(serviceType);
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return base.GetAllInstances(serviceType);
+            return GetAllInstances(serviceType);
         }
 
         public new void Register(Type serviceType)
@@ -88,7 +90,7 @@ namespace Framework.LightInject
 
         public IEnumerable<ISecurityRule<TMessage>> ResolveSecurityRules<TMessage>() where TMessage : IMessage
         {
-            return base.GetAllInstances<ISecurityRule<TMessage>>();
+            return GetAllInstances<ISecurityRule<TMessage>>();
         }
 
         public void RegisterSecurityRule<TMessage, TSecurityRule>()

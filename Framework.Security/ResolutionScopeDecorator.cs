@@ -5,10 +5,11 @@ namespace Framework.Security
 {
     public class ResolutionScopeDecorator<TCommand> : ICommandDecorator<TCommand> where TCommand : ICommand
     {
-        private ICommandHandler<TCommand> _commandHandler;
-        private IDependencyContainer _dependencyContainer;
+        private readonly ICommandHandler<TCommand> _commandHandler;
+        private readonly IDependencyContainer _dependencyContainer;
 
-        public ResolutionScopeDecorator(ICommandHandler<TCommand> commandHandler, IDependencyContainer dependencyContainer)
+        public ResolutionScopeDecorator(ICommandHandler<TCommand> commandHandler,
+            IDependencyContainer dependencyContainer)
         {
             _commandHandler = commandHandler;
             _dependencyContainer = dependencyContainer;

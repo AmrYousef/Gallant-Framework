@@ -1,7 +1,7 @@
-﻿using Framework.Core.Data.Core;
+﻿using System.Linq;
+using Framework.Core.Data.Core;
 using Framework.Core.Domain;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace Framework.EntityFramework
 {
@@ -24,7 +24,7 @@ namespace Framework.EntityFramework
         public virtual void Add<T>(T newEntity) where T : BaseEntity
         {
             base.Set<T>().Attach(newEntity);
-            base.Entry(newEntity).State = EntityState.Added;
+            Entry(newEntity).State = EntityState.Added;
         }
 
         public virtual void Update<T>(T updatedEntity) where T : BaseEntity
@@ -33,7 +33,7 @@ namespace Framework.EntityFramework
 
         public void Delete<T>(T deletedEntity) where T : BaseEntity
         {
-            base.Entry(deletedEntity).State = EntityState.Deleted;
+            Entry(deletedEntity).State = EntityState.Deleted;
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Framework.Core.Domain;
-using System.Linq;
+﻿using System.Linq;
+using Framework.Core.Domain;
 
 namespace Framework.Core.Data.Core
 {
