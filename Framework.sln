@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{0FAE15A9-D9FC-4E00-BE6A-3BCB663217C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.LightInject", "Framework.LightInject\Framework.LightInject.csproj", "{78A6AF63-BFB4-462C-917C-E42B79C1788F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Cqrs", "Framework.Cqrs\Framework.Cqrs.csproj", "{3A54D64E-BCCB-478A-B0D8-4920272843C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.EntityFramework", "Framework.EntityFramework\Framework.EntityFramework.csproj", "{21D1CB4E-4DC1-4B4A-851A-ED4BEAF8AF6A}"
@@ -39,10 +37,6 @@ Global
 		{0FAE15A9-D9FC-4E00-BE6A-3BCB663217C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FAE15A9-D9FC-4E00-BE6A-3BCB663217C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FAE15A9-D9FC-4E00-BE6A-3BCB663217C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78A6AF63-BFB4-462C-917C-E42B79C1788F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78A6AF63-BFB4-462C-917C-E42B79C1788F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78A6AF63-BFB4-462C-917C-E42B79C1788F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78A6AF63-BFB4-462C-917C-E42B79C1788F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3A54D64E-BCCB-478A-B0D8-4920272843C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3A54D64E-BCCB-478A-B0D8-4920272843C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A54D64E-BCCB-478A-B0D8-4920272843C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
