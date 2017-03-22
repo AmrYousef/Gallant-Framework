@@ -46,7 +46,7 @@ namespace Framework.LightInject.WebApi.LightInject
     /// Extends the <see cref="IServiceContainer"/> interface with methods that
     /// enables dependency injection in a Web API application.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class WebApiContainerExtensions
     {
         /// <summary>
@@ -106,7 +106,7 @@ namespace Framework.LightInject.WebApi.LightInject.WebApi
     /// that enables <see cref="ApiController"/> instances and their dependencies to be
     /// resolved through the service container.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     internal class LightInjectWebApiDependencyResolver : IDependencyResolver
     {
         private readonly IServiceContainer serviceContainer;
@@ -165,7 +165,7 @@ namespace Framework.LightInject.WebApi.LightInject.WebApi
     /// <summary>
     /// An <see cref="IDependencyScope"/> implementation that wraps a <see cref="Scope"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     internal class LightInjectWebApiDependencyScope : IDependencyScope
     {
         private readonly IServiceContainer serviceContainer;
@@ -215,7 +215,7 @@ namespace Framework.LightInject.WebApi.LightInject.WebApi
     /// A <see cref="IFilterProvider"/> that uses an <see cref="IServiceContainer"/>
     /// to inject property dependencies into <see cref="IFilter"/> instances.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     internal class LightInjectWebApiFilterProvider : IFilterProvider
     {
         private readonly IServiceContainer serviceContainer;

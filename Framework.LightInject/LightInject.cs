@@ -21,7 +21,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 ******************************************************************************
-    LightInject version 4.0.0 (NET46)
+    LightInject version 4.0.0 (DNXCORE50)
     http://www.lightinject.net/
     http://twitter.com/bernhardrichter
 ******************************************************************************/
@@ -32,7 +32,6 @@
 [module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1633:FileMustHaveHeader", Justification = "Custom header.")]
 [module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "All public members are documented.")]
 [module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = "Performance")]
-
 namespace Framework.LightInject.LightInject
 {
     using System;
@@ -401,12 +400,6 @@ namespace Framework.LightInject.LightInject
             Expression<Func<IServiceFactory, PropertyInfo, TDependency>> factory);
 
         /// <summary>
-        /// Registers composition roots from assemblies in the base directory that matches the <paramref name="searchPattern"/>.
-        /// </summary>
-        /// <param name="searchPattern">The search pattern used to filter the assembly files.</param>
-        void RegisterAssembly(string searchPattern);
-
-        /// <summary>
         /// Decorates the <paramref name="serviceType"/> with the given <paramref name="decoratorType"/>.
         /// </summary>
         /// <param name="serviceType">The target service type.</param>
@@ -751,16 +744,16 @@ namespace Framework.LightInject.LightInject
     }
 
     /// <summary>
-    /// Represents a class that is capable of extracting
+    /// Represents a class that is capable of extracting 
     /// attributes of type <see cref="CompositionRootTypeAttribute"/> from an <see cref="Assembly"/>.
     /// </summary>
     public interface ICompositionRootAttributeExtractor
     {
         /// <summary>
-        /// Gets a list of attributes of type <see cref="CompositionRootTypeAttribute"/> from
+        /// Gets a list of attributes of type <see cref="CompositionRootTypeAttribute"/> from 
         /// the given <paramref name="assembly"/>.
         /// </summary>
-        /// <param name="assembly">The assembly from which to extract
+        /// <param name="assembly">The assembly from which to extract 
         /// <see cref="CompositionRootTypeAttribute"/> attributes.</param>
         /// <returns>A list of attributes of type <see cref="CompositionRootTypeAttribute"/></returns>
         CompositionRootTypeAttribute[] GetAttributes(Assembly assembly);
@@ -878,19 +871,6 @@ namespace Framework.LightInject.LightInject
         /// <returns>A <see cref="ConstructionInfo"/> instance that represents the constructor to be used
         /// when creating a new instance of the <paramref name="implementingType"/>.</returns>
         ConstructorInfo Execute(Type implementingType);
-    }
-
-    /// <summary>
-    /// Represents a class that is responsible loading a set of assemblies based on the given search pattern.
-    /// </summary>
-    public interface IAssemblyLoader
-    {
-        /// <summary>
-        /// Loads a set of assemblies based on the given <paramref name="searchPattern"/>.
-        /// </summary>
-        /// <param name="searchPattern">The search pattern to use.</param>
-        /// <returns>A list of assemblies based on the given <paramref name="searchPattern"/>.</returns>
-        IEnumerable<Assembly> Load(string searchPattern);
     }
 
     /// <summary>
@@ -1040,7 +1020,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Extends the <see cref="Expression"/> class.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class ExpressionExtensions
     {
         /// <summary>
@@ -1076,7 +1056,7 @@ namespace Framework.LightInject.LightInject
     /// Contains a set of helper method related to validating
     /// user input.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class Ensure
     {
         /// <summary>
@@ -1097,7 +1077,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Extends the <see cref="ImmutableHashTable{TKey,TValue}"/> class.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class ImmutableHashTableExtensions
     {
         /// <summary>
@@ -1128,7 +1108,7 @@ namespace Framework.LightInject.LightInject
             var hashCode = RuntimeHelpers.GetHashCode(key);
             var bucketIndex = hashCode & (hashTable.Divisor - 1);
             ImmutableHashTree<Type, TValue> tree = hashTable.Buckets[bucketIndex];
-            return tree.Search(key);
+            return tree.Search(key);           
         }
 
         /// <summary>
@@ -1149,7 +1129,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Extends the <see cref="ImmutableHashTree{TKey,TValue}"/> class.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class ImmutableHashTreeExtensions
     {
         /// <summary>
@@ -1261,11 +1241,11 @@ namespace Framework.LightInject.LightInject
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class LazyTypeExtensions
     {
         private static readonly ThreadSafeDictionary<Type, ConstructorInfo> Constructors = new ThreadSafeDictionary<Type, ConstructorInfo>();
-
+        
         public static ConstructorInfo GetLazyConstructor(this Type type)
         {
             return Constructors.GetOrAdd(type, GetConstructor);
@@ -1278,7 +1258,7 @@ namespace Framework.LightInject.LightInject
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class EnumerableTypeExtensions
     {
         private static readonly ThreadSafeDictionary<Type, Type> EnumerableTypes = new ThreadSafeDictionary<Type, Type>();
@@ -1294,7 +1274,7 @@ namespace Framework.LightInject.LightInject
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class FuncTypeExtensions
     {
         private static readonly ThreadSafeDictionary<Type, Type> FuncTypes = new ThreadSafeDictionary<Type, Type>();
@@ -1310,7 +1290,7 @@ namespace Framework.LightInject.LightInject
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class LifetimeHelper
     {
         static LifetimeHelper()
@@ -1327,7 +1307,7 @@ namespace Framework.LightInject.LightInject
         public static MethodInfo GetScopeManagerMethod { get; private set; }
     }
 
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class DelegateTypeExtensions
     {
         private static readonly MethodInfo OpenGenericGetInstanceMethodInfo =
@@ -1349,7 +1329,7 @@ namespace Framework.LightInject.LightInject
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class NamedDelegateTypeExtensions
     {
         private static readonly MethodInfo CreateInstanceDelegateMethodInfo =
@@ -1380,7 +1360,7 @@ namespace Framework.LightInject.LightInject
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class ReflectionHelper
     {
         private static readonly Lazy<ThreadSafeDictionary<Type, MethodInfo>> GetInstanceWithParametersMethods;
@@ -1455,82 +1435,138 @@ namespace Framework.LightInject.LightInject
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class TypeHelper
     {
         public static Type[] GetGenericTypeArguments(this Type type)
         {
-            return type.GetGenericArguments();
+            return type.GetTypeInfo().GenericTypeArguments;
         }
 
-        public static bool IsClass(this Type type)
+        public static MethodInfo[] GetMethods(this Type type)
         {
-            return type.IsClass;
+            return type.GetTypeInfo().DeclaredMethods.ToArray();
         }
 
-        public static bool IsAbstract(this Type type)
+        public static PropertyInfo[] GetProperties(this Type type)
         {
-            return type.IsAbstract;
+            return type.GetRuntimeProperties().ToArray();
         }
 
-        public static bool IsNestedPrivate(this Type type)
+        public static Type[] GetInterfaces(this Type type)
         {
-            return type.IsNestedPrivate;
+            return type.GetTypeInfo().ImplementedInterfaces.ToArray();
         }
 
-        public static bool IsGenericType(this Type type)
+        public static ConstructorInfo[] GetConstructors(this Type type)
         {
-            return type.IsGenericType;
-        }
-
-        public static bool ContainsGenericParameters(this Type type)
-        {
-            return type.ContainsGenericParameters;
-        }
-
-        public static Type GetBaseType(this Type type)
-        {
-            return type.BaseType;
-        }
-
-        public static bool IsGenericTypeDefinition(this Type type)
-        {
-            return type.IsGenericTypeDefinition;
-        }
-
-        public static Assembly GetAssembly(this Type type)
-        {
-            return type.Assembly;
-        }
-
-        public static bool IsValueType(this Type type)
-        {
-            return type.IsValueType;
-        }
-
-        public static MethodInfo GetMethodInfo(this Delegate del)
-        {
-            return del.Method;
+            return type.GetTypeInfo().DeclaredConstructors.Where(c => c.IsPublic && !c.IsStatic).ToArray();
         }
 
         public static MethodInfo GetPrivateMethod(this Type type, string name)
         {
-            return type.GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic);
+            return GetMethod(type, name);
         }
 
         public static MethodInfo GetPrivateStaticMethod(this Type type, string name)
         {
-            return type.GetMethod(name, BindingFlags.Static | BindingFlags.NonPublic);
+            return GetMethod(type, name);
         }
 
         public static MethodInfo[] GetPrivateStaticMethods(this Type type)
         {
-            return type.GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
+            return type.GetRuntimeMethods().Where(m => m.IsPrivate && m.IsStatic).ToArray();
         }
 
-        public static IEnumerable<Attribute> GetCustomAttributes(this Assembly assembly, Type attributeType)
+        public static MethodInfo GetMethod(this Type type, string name)
         {
-            return assembly.GetCustomAttributes(attributeType, false).Cast<Attribute>();
+            return type.GetTypeInfo().GetDeclaredMethod(name);
+        }
+
+        public static MethodInfo GetMethod(this Type type, string name, Type[] types)
+        {
+            return type.GetRuntimeMethod(name, types);
+        }
+
+        public static bool IsAssignableFrom(this Type type, Type fromType)
+        {
+            return type.GetTypeInfo().IsAssignableFrom(fromType.GetTypeInfo());
+        }
+
+        public static bool IsDefined(this Type type, Type attributeType, bool inherit)
+        {
+            return type.GetTypeInfo().IsDefined(attributeType, inherit);
+        }
+
+        public static PropertyInfo GetProperty(this Type type, string name)
+        {
+            return type.GetTypeInfo().GetDeclaredProperty(name);
+        }
+
+        public static bool IsValueType(this Type type)
+        {
+            return type.GetTypeInfo().IsValueType;
+        }
+
+        public static bool IsClass(this Type type)
+        {
+            return type.GetTypeInfo().IsClass;
+        }
+
+        public static bool IsAbstract(this Type type)
+        {
+            return type.GetTypeInfo().IsAbstract;
+        }
+
+        public static bool IsNestedPrivate(this Type type)
+        {
+            return type.GetTypeInfo().IsNestedPrivate;
+        }
+
+        public static bool IsGenericType(this Type type)
+        {
+            return type.GetTypeInfo().IsGenericType;
+        }
+
+        public static bool ContainsGenericParameters(this Type type)
+        {
+            return type.GetTypeInfo().ContainsGenericParameters;
+        }
+
+        public static Type GetBaseType(this Type type)
+        {
+            return type.GetTypeInfo().BaseType;
+        }
+
+        public static bool IsGenericTypeDefinition(this Type type)
+        {
+            return type.GetTypeInfo().IsGenericTypeDefinition;
+        }
+
+        public static MethodInfo GetSetMethod(this PropertyInfo propertyInfo)
+        {
+            return propertyInfo.SetMethod;
+        }
+
+        public static MethodInfo GetGetMethod(this PropertyInfo propertyInfo)
+        {
+            return propertyInfo.GetMethod;
+        }
+
+        public static Type[] GetTypes(this Assembly assembly)
+        {
+            return assembly.DefinedTypes.Select(t => t.AsType()).ToArray();
+        }
+
+        public static Assembly GetAssembly(this Type type)
+        {
+            return type.GetTypeInfo().Assembly;
+        }
+
+        public static ConstructorInfo GetConstructor(this Type type, Type[] types)
+        {
+            return
+                GetConstructors(type).FirstOrDefault(c => c.GetParameters().Select(p => p.ParameterType).SequenceEqual(types));
         }
 
         public static bool IsEnumerableOfT(this Type serviceType)
@@ -1601,7 +1637,7 @@ namespace Framework.LightInject.LightInject
     /// Extends the <see cref="IEmitter"/> interface with a set of methods
     /// that optimizes and simplifies emitting MSIL instructions.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class EmitterExtensions
     {
         /// <summary>
@@ -1716,15 +1752,12 @@ namespace Framework.LightInject.LightInject
                 case 0:
                     emitter.Emit(OpCodes.Ldloc_0);
                     return;
-
                 case 1:
                     emitter.Emit(OpCodes.Ldloc_1);
                     return;
-
                 case 2:
                     emitter.Emit(OpCodes.Ldloc_2);
                     return;
-
                 case 3:
                     emitter.Emit(OpCodes.Ldloc_3);
                     return;
@@ -1752,15 +1785,12 @@ namespace Framework.LightInject.LightInject
                 case 0:
                     emitter.Emit(OpCodes.Ldarg_0);
                     return;
-
                 case 1:
                     emitter.Emit(OpCodes.Ldarg_1);
                     return;
-
                 case 2:
                     emitter.Emit(OpCodes.Ldarg_2);
                     return;
-
                 case 3:
                     emitter.Emit(OpCodes.Ldarg_3);
                     return;
@@ -1789,15 +1819,12 @@ namespace Framework.LightInject.LightInject
                 case 0:
                     emitter.Emit(OpCodes.Stloc_0);
                     return;
-
                 case 1:
                     emitter.Emit(OpCodes.Stloc_1);
                     return;
-
                 case 2:
                     emitter.Emit(OpCodes.Stloc_2);
                     return;
-
                 case 3:
                     emitter.Emit(OpCodes.Stloc_3);
                     return;
@@ -1835,35 +1862,27 @@ namespace Framework.LightInject.LightInject
                 case 0:
                     emitter.Emit(OpCodes.Ldc_I4_0);
                     return;
-
                 case 1:
                     emitter.Emit(OpCodes.Ldc_I4_1);
                     return;
-
                 case 2:
                     emitter.Emit(OpCodes.Ldc_I4_2);
                     return;
-
                 case 3:
                     emitter.Emit(OpCodes.Ldc_I4_3);
                     return;
-
                 case 4:
                     emitter.Emit(OpCodes.Ldc_I4_4);
                     return;
-
                 case 5:
                     emitter.Emit(OpCodes.Ldc_I4_5);
                     return;
-
                 case 6:
                     emitter.Emit(OpCodes.Ldc_I4_6);
                     return;
-
                 case 7:
                     emitter.Emit(OpCodes.Ldc_I4_7);
                     return;
-
                 case 8:
                     emitter.Emit(OpCodes.Ldc_I4_8);
                     return;
@@ -1902,7 +1921,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Represents a set of configurable options when creating a new instance of the container.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ContainerOptions
     {
         private static readonly Lazy<ContainerOptions> DefaultOptions =
@@ -1936,7 +1955,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// An ultra lightweight service container.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ServiceContainer : IServiceContainer
     {
         private const string UnresolvedDependencyError = "Unresolved dependency {0}";
@@ -1956,7 +1975,8 @@ namespace Framework.LightInject.LightInject
 
         private readonly Stack<Action<IEmitter>> dependencyStack = new Stack<Action<IEmitter>>();
 
-        private readonly Lazy<IConstructionInfoProvider> constructionInfoProvider;
+        private readonly Lazy<IConstructionInfoProvider> constructionInfoProvider;        
+        
 
         private ImmutableHashTable<Type, GetInstanceDelegate> delegates =
             ImmutableHashTable<Type, GetInstanceDelegate>.Empty;
@@ -1985,7 +2005,6 @@ namespace Framework.LightInject.LightInject
             constructionInfoProvider = new Lazy<IConstructionInfoProvider>(CreateConstructionInfoProvider);
             methodSkeletonFactory = (returnType, parameterTypes) => new DynamicMethodSkeleton(returnType, parameterTypes);
             ScopeManagerProvider = new PerThreadScopeManagerProvider();
-            AssemblyLoader = new AssemblyLoader();
         }
 
         /// <summary>
@@ -2010,13 +2029,13 @@ namespace Framework.LightInject.LightInject
         public IPropertyDependencySelector PropertyDependencySelector { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ITypeExtractor"/> that is responsible
+        /// Gets or sets the <see cref="ITypeExtractor"/> that is responsible 
         /// for extracting composition roots types from an assembly.
         /// </summary>
         public ITypeExtractor CompositionRootTypeExtractor { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ICompositionRootExecutor"/> that is responsible
+        /// Gets or sets the <see cref="ICompositionRootExecutor"/> that is responsible 
         /// for executing composition roots.
         /// </summary>
         public ICompositionRootExecutor CompositionRootExecutor { get; set; }
@@ -2037,11 +2056,6 @@ namespace Framework.LightInject.LightInject
         /// Gets or sets the <see cref="IAssemblyScanner"/> instance that is responsible for scanning assemblies.
         /// </summary>
         public IAssemblyScanner AssemblyScanner { get; set; }
-
-        /// <summary>
-        /// Gets or sets the <see cref="IAssemblyLoader"/> instance that is responsible for loading assemblies during assembly scanning.
-        /// </summary>
-        public IAssemblyLoader AssemblyLoader { get; set; }
 
         /// <summary>
         /// Gets a list of <see cref="ServiceRegistration"/> instances that represents the registered services.
@@ -2253,18 +2267,6 @@ namespace Framework.LightInject.LightInject
         }
 
         /// <summary>
-        /// Registers composition roots from assemblies in the base directory that matches the <paramref name="searchPattern"/>.
-        /// </summary>
-        /// <param name="searchPattern">The search pattern used to filter the assembly files.</param>
-        public void RegisterAssembly(string searchPattern)
-        {
-            foreach (Assembly assembly in AssemblyLoader.Load(searchPattern))
-            {
-                RegisterAssembly(assembly);
-            }
-        }
-
-        /// <summary>
         /// Decorates the <paramref name="serviceType"/> with the given <paramref name="decoratorType"/>.
         /// </summary>
         /// <param name="serviceType">The target service type.</param>
@@ -2328,10 +2330,10 @@ namespace Framework.LightInject.LightInject
         public void Override(Func<ServiceRegistration, bool> serviceSelector, Func<IServiceFactory, ServiceRegistration, ServiceRegistration> serviceRegistrationFactory)
         {
             var serviceOverride = new ServiceOverride
-            {
-                CanOverride = serviceSelector,
-                ServiceRegistrationFactory = serviceRegistrationFactory
-            };
+                                      {
+                                          CanOverride = serviceSelector,
+                                          ServiceRegistrationFactory = serviceRegistrationFactory
+                                      };
             overrides.Add(serviceOverride);
         }
 
@@ -3411,6 +3413,7 @@ namespace Framework.LightInject.LightInject
 
                 if (constructionInfo.FactoryDelegate != null)
                 {
+
                     EmitNewInstanceUsingFactoryDelegate(constructionInfo.FactoryDelegate, emitter);
                 }
                 else
@@ -3476,10 +3479,10 @@ namespace Framework.LightInject.LightInject
             MethodInfo invokeMethod = funcType.GetMethod("Invoke");
             var parameters = invokeMethod.GetParameters();
             if (parameters.Length > 1)
-            {
+            {                
                 emitter.PushArguments(parameters.Skip(1).ToArray());
             }
-
+           
             emitter.Call(invokeMethod);
         }
 
@@ -3529,6 +3532,7 @@ namespace Framework.LightInject.LightInject
             //}
 
             //var instanceDelegateIndex = constants.Add(instanceDelegate);
+
 
             //var invokeMethod = typeof(GetInstanceDelegate).GetMethod("Invoke");
             //emitter.PushConstant(instanceDelegateIndex);
@@ -3583,7 +3587,7 @@ namespace Framework.LightInject.LightInject
 
             return emitter;
         }
-
+    
         private void EmitDependencyUsingFactoryExpression(IEmitter emitter, Dependency dependency)
         {
             var actions = new List<Action<IEmitter>>();
@@ -3856,16 +3860,16 @@ namespace Framework.LightInject.LightInject
             }
 
             var serviceRegistration = new ServiceRegistration
-            {
-                ServiceType = closedGenericServiceType,
-                ImplementingType =
+                                                          {
+                                                              ServiceType = closedGenericServiceType,
+                                                              ImplementingType =
                                                                   closedGenericImplementingType,
-                ServiceName = serviceName,
-                Lifetime =
+                                                              ServiceName = serviceName,
+                                                              Lifetime =
                                                                   CloneLifeTime(
                                                                       openGenericServiceRegistration
                                                                   .Lifetime)
-            };
+                                                          };
             Register(serviceRegistration);
             return GetEmitMethod(serviceRegistration.ServiceType, serviceRegistration.ServiceName);
         }
@@ -4055,6 +4059,7 @@ namespace Framework.LightInject.LightInject
             Register(serviceRegistration);
         }
 
+
         private void RegisterServiceFromLambdaExpression<TService>(
             LambdaExpression factory, ILifetime lifetime, string serviceName)
         {
@@ -4177,7 +4182,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// A <see cref="IScopeManagerProvider"/> that provides a <see cref="ScopeManager"/> per thread.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PerThreadScopeManagerProvider : IScopeManagerProvider
     {
         private readonly ThreadLocal<ScopeManager> scopeManagers =
@@ -4197,7 +4202,7 @@ namespace Framework.LightInject.LightInject
     /// A <see cref="IScopeManagerProvider"/> that provides a <see cref="ScopeManager"/> across
     /// async points.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PerLogicalCallContextScopeManagerProvider : IScopeManagerProvider
     {
         private readonly LogicalThreadStorage<ScopeManager> scopeManagers =
@@ -4213,12 +4218,13 @@ namespace Framework.LightInject.LightInject
         }
     }
 
+
     /// <summary>
     /// A thread safe dictionary.
     /// </summary>
     /// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
     /// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ThreadSafeDictionary<TKey, TValue> : ConcurrentDictionary<TKey, TValue>
     {
         /// <summary>
@@ -4239,10 +4245,11 @@ namespace Framework.LightInject.LightInject
         }
     }
 
+
     /// <summary>
     /// Selects the <see cref="ConstructionInfo"/> from a given type that represents the most resolvable constructor.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class MostResolvableConstructorSelector : IConstructorSelector
     {
         private readonly Func<Type, string, bool> canGetInstance;
@@ -4311,7 +4318,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Selects the constructor dependencies for a given <see cref="ConstructorInfo"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ConstructorDependencySelector : IConstructorDependencySelector
     {
         /// <summary>
@@ -4328,19 +4335,19 @@ namespace Framework.LightInject.LightInject
                            .Select(
                                p =>
                                new ConstructorDependency
-                               {
-                                   ServiceName = string.Empty,
-                                   ServiceType = p.ParameterType,
-                                   Parameter = p,
-                                   IsRequired = true
-                               });
+                                   {
+                                       ServiceName = string.Empty,
+                                       ServiceType = p.ParameterType,
+                                       Parameter = p,
+                                       IsRequired = true
+                                   });
         }
     }
 
     /// <summary>
     /// Selects the property dependencies for a given <see cref="Type"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PropertyDependencySelector : IPropertyDependencySelector
     {
         /// <summary>
@@ -4375,7 +4382,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Builds a <see cref="ConstructionInfo"/> instance based on the implementing <see cref="Type"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class TypeConstructionInfoBuilder : ITypeConstructionInfoBuilder
     {
         private readonly IConstructorSelector constructorSelector;
@@ -4462,7 +4469,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Keeps track of a <see cref="ConstructionInfo"/> instance for each <see cref="Registration"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ConstructionInfoProvider : IConstructionInfoProvider
     {
         private readonly IConstructionInfoBuilder constructionInfoBuilder;
@@ -4502,7 +4509,7 @@ namespace Framework.LightInject.LightInject
     /// Provides a <see cref="ConstructorInfo"/> instance
     /// that describes how to create a service instance.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ConstructionInfoBuilder : IConstructionInfoBuilder
     {
         private readonly Lazy<ILambdaConstructionInfoBuilder> lambdaConstructionInfoBuilder;
@@ -4551,7 +4558,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Parses a <see cref="LambdaExpression"/> into a <see cref="ConstructionInfo"/> instance.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class LambdaConstructionInfoBuilder : ILambdaConstructionInfoBuilder
     {
         /// <summary>
@@ -4570,10 +4577,8 @@ namespace Framework.LightInject.LightInject
             {
                 case ExpressionType.New:
                     return CreateConstructionInfoBasedOnNewExpression((NewExpression)lambdaExpression.Body);
-
                 case ExpressionType.MemberInit:
                     return CreateConstructionInfoBasedOnHandleMemberInitExpression((MemberInitExpression)lambdaExpression.Body);
-
                 default:
                     return CreateConstructionInfoBasedOnLambdaExpression(lambdaExpression);
             }
@@ -4724,7 +4729,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Contains information about a service request that originates from a rule based service registration.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ServiceRequest
     {
         /// <summary>
@@ -4759,7 +4764,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Base class for concrete registrations within the service container.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public abstract class Registration
     {
         /// <summary>
@@ -4786,7 +4791,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Contains information about a registered decorator.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class DecoratorRegistration : Registration
     {
         /// <summary>
@@ -4820,7 +4825,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Contains information about a registered service.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ServiceRegistration : Registration
     {
         /// <summary>
@@ -4879,7 +4884,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Contains information about how to create a service instance.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ConstructionInfo
     {
         /// <summary>
@@ -4922,7 +4927,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Represents a class dependency.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public abstract class Dependency
     {
         /// <summary>
@@ -4964,7 +4969,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Represents a property dependency.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PropertyDependency : Dependency
     {
         /// <summary>
@@ -4996,7 +5001,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Represents a constructor dependency.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ConstructorDependency : Dependency
     {
         /// <summary>
@@ -5034,7 +5039,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Ensures that only one instance of a given service can exist within the current <see cref="IServiceContainer"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PerContainerLifetime : ILifetime, IDisposable
     {
         private readonly object syncRoot = new object();
@@ -5080,7 +5085,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Ensures that a new instance is created for each request in addition to tracking disposable instances.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PerRequestLifeTime : ILifetime
     {
         /// <summary>
@@ -5119,7 +5124,7 @@ namespace Framework.LightInject.LightInject
     /// If the service instance implements <see cref="IDisposable"/>,
     /// it will be disposed when the <see cref="Scope"/> ends.
     /// </remarks>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PerScopeLifetime : ILifetime
     {
         private readonly ThreadSafeDictionary<Scope, object> instances = new ThreadSafeDictionary<Scope, object>();
@@ -5171,7 +5176,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Manages a set of <see cref="Scope"/> instances.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ScopeManager
     {
         private readonly object syncRoot = new object();
@@ -5236,7 +5241,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Represents a scope.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Scope : IDisposable
     {
         private readonly IList<IDisposable> disposableObjects = new List<IDisposable>();
@@ -5262,7 +5267,7 @@ namespace Framework.LightInject.LightInject
         /// <summary>
         /// Gets or sets the parent <see cref="Scope"/>.
         /// </summary>
-        public Scope ParentScope { get; set; }
+        public Scope ParentScope { get;  set; }
 
         /// <summary>
         /// Gets or sets the child <see cref="Scope"/>.
@@ -5310,7 +5315,7 @@ namespace Framework.LightInject.LightInject
     /// Used at the assembly level to describe the composition root(s) for the target assembly.
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class CompositionRootTypeAttribute : Attribute
     {
         /// <summary>
@@ -5329,17 +5334,17 @@ namespace Framework.LightInject.LightInject
     }
 
     /// <summary>
-    /// A class that is capable of extracting attributes of type
-    /// <see cref="CompositionRootTypeAttribute"/> from an <see cref="Assembly"/>.
+    /// A class that is capable of extracting attributes of type 
+    /// <see cref="CompositionRootTypeAttribute"/> from an <see cref="Assembly"/>.    
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class CompositionRootAttributeExtractor : ICompositionRootAttributeExtractor
     {
         /// <summary>
-        /// Gets a list of attributes of type <see cref="CompositionRootTypeAttribute"/> from
+        /// Gets a list of attributes of type <see cref="CompositionRootTypeAttribute"/> from 
         /// the given <paramref name="assembly"/>.
         /// </summary>
-        /// <param name="assembly">The assembly from which to extract
+        /// <param name="assembly">The assembly from which to extract 
         /// <see cref="CompositionRootTypeAttribute"/> attributes.</param>
         /// <returns>A list of attributes of type <see cref="CompositionRootTypeAttribute"/></returns>
         public CompositionRootTypeAttribute[] GetAttributes(Assembly assembly)
@@ -5352,7 +5357,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Extracts concrete <see cref="ICompositionRoot"/> implementations from an <see cref="Assembly"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class CompositionRootTypeExtractor : ITypeExtractor
     {
         private readonly ICompositionRootAttributeExtractor compositionRootAttributeExtractor;
@@ -5361,7 +5366,7 @@ namespace Framework.LightInject.LightInject
         /// Initializes a new instance of the <see cref="CompositionRootTypeExtractor"/> class.
         /// </summary>
         /// <param name="compositionRootAttributeExtractor">The <see cref="ICompositionRootAttributeExtractor"/>
-        /// that is responsible for extracting attributes of type <see cref="CompositionRootTypeAttribute"/> from
+        /// that is responsible for extracting attributes of type <see cref="CompositionRootTypeAttribute"/> from 
         /// a given <see cref="Assembly"/>.</param>
         public CompositionRootTypeExtractor(ICompositionRootAttributeExtractor compositionRootAttributeExtractor)
         {
@@ -5376,7 +5381,7 @@ namespace Framework.LightInject.LightInject
         public Type[] Execute(Assembly assembly)
         {
             CompositionRootTypeAttribute[] compositionRootAttributes =
-                compositionRootAttributeExtractor.GetAttributes(assembly);
+                compositionRootAttributeExtractor.GetAttributes(assembly);               
 
             if (compositionRootAttributes.Length > 0)
             {
@@ -5386,11 +5391,11 @@ namespace Framework.LightInject.LightInject
             return assembly.GetTypes().Where(t => !t.IsAbstract() && typeof(ICompositionRoot).IsAssignableFrom(t)).ToArray();
         }
     }
-
+    
     /// <summary>
     /// A <see cref="ITypeExtractor"/> cache decorator.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class CachedTypeExtractor : ITypeExtractor
     {
         private readonly ITypeExtractor typeExtractor;
@@ -5421,57 +5426,56 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Extracts concrete types from an <see cref="Assembly"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class ConcreteTypeExtractor : ITypeExtractor
     {
-        private static readonly List<Type> InternalTypes = new List<Type>();
+        private static readonly List<Type> publicTypes = new List<Type>();
 
         static ConcreteTypeExtractor()
         {
-            InternalTypes.Add(typeof(LambdaConstructionInfoBuilder));
-            InternalTypes.Add(typeof(ConstructorDependency));
-            InternalTypes.Add(typeof(PropertyDependency));
-            InternalTypes.Add(typeof(ThreadSafeDictionary<,>));
-            InternalTypes.Add(typeof(Scope));
-            InternalTypes.Add(typeof(PerContainerLifetime));
-            InternalTypes.Add(typeof(PerScopeLifetime));
-            InternalTypes.Add(typeof(ScopeManager));
-            InternalTypes.Add(typeof(ServiceRegistration));
-            InternalTypes.Add(typeof(DecoratorRegistration));
-            InternalTypes.Add(typeof(ServiceRequest));
-            InternalTypes.Add(typeof(Registration));
-            InternalTypes.Add(typeof(ServiceContainer));
-            InternalTypes.Add(typeof(ConstructionInfo));
-            InternalTypes.Add(typeof(AssemblyLoader));
-            InternalTypes.Add(typeof(TypeConstructionInfoBuilder));
-            InternalTypes.Add(typeof(ConstructionInfoProvider));
-            InternalTypes.Add(typeof(ConstructionInfoBuilder));
-            InternalTypes.Add(typeof(MostResolvableConstructorSelector));
-            InternalTypes.Add(typeof(PerContainerLifetime));
-            InternalTypes.Add(typeof(PerContainerLifetime));
-            InternalTypes.Add(typeof(PerRequestLifeTime));
-            InternalTypes.Add(typeof(PropertySelector));
-            InternalTypes.Add(typeof(AssemblyScanner));
-            InternalTypes.Add(typeof(ConstructorDependencySelector));
-            InternalTypes.Add(typeof(PropertyDependencySelector));
-            InternalTypes.Add(typeof(CompositionRootTypeAttribute));
-            InternalTypes.Add(typeof(ConcreteTypeExtractor));
-            InternalTypes.Add(typeof(CompositionRootExecutor));
-            InternalTypes.Add(typeof(CompositionRootTypeExtractor));
-            InternalTypes.Add(typeof(CachedTypeExtractor));
-            InternalTypes.Add(typeof(ImmutableList<>));
-            InternalTypes.Add(typeof(KeyValue<,>));
-            InternalTypes.Add(typeof(ImmutableHashTree<,>));
-            InternalTypes.Add(typeof(ImmutableHashTable<,>));
-            InternalTypes.Add(typeof(PerThreadScopeManagerProvider));
-            InternalTypes.Add(typeof(Emitter));
-            InternalTypes.Add(typeof(Instruction));
-            InternalTypes.Add(typeof(Instruction<>));
-            InternalTypes.Add(typeof(GetInstanceDelegate));
-            InternalTypes.Add(typeof(ContainerOptions));
-            InternalTypes.Add(typeof(CompositionRootAttributeExtractor));
-            InternalTypes.Add(typeof(PerLogicalCallContextScopeManagerProvider));
-            InternalTypes.Add(typeof(LogicalThreadStorage<>));
+            publicTypes.Add(typeof(LambdaConstructionInfoBuilder));
+            publicTypes.Add(typeof(ConstructorDependency));
+            publicTypes.Add(typeof(PropertyDependency));
+            publicTypes.Add(typeof(ThreadSafeDictionary<,>));
+            publicTypes.Add(typeof(Scope));
+            publicTypes.Add(typeof(PerContainerLifetime));
+            publicTypes.Add(typeof(PerScopeLifetime));
+            publicTypes.Add(typeof(ScopeManager));
+            publicTypes.Add(typeof(ServiceRegistration));
+            publicTypes.Add(typeof(DecoratorRegistration));
+            publicTypes.Add(typeof(ServiceRequest));
+            publicTypes.Add(typeof(Registration));
+            publicTypes.Add(typeof(ServiceContainer));
+            publicTypes.Add(typeof(ConstructionInfo));
+            publicTypes.Add(typeof(TypeConstructionInfoBuilder));
+            publicTypes.Add(typeof(ConstructionInfoProvider));
+            publicTypes.Add(typeof(ConstructionInfoBuilder));
+            publicTypes.Add(typeof(MostResolvableConstructorSelector));
+            publicTypes.Add(typeof(PerContainerLifetime));
+            publicTypes.Add(typeof(PerContainerLifetime));
+            publicTypes.Add(typeof(PerRequestLifeTime));
+            publicTypes.Add(typeof(PropertySelector));
+            publicTypes.Add(typeof(AssemblyScanner));
+            publicTypes.Add(typeof(ConstructorDependencySelector));
+            publicTypes.Add(typeof(PropertyDependencySelector));
+            publicTypes.Add(typeof(CompositionRootTypeAttribute));
+            publicTypes.Add(typeof(ConcreteTypeExtractor));
+            publicTypes.Add(typeof(CompositionRootExecutor));
+            publicTypes.Add(typeof(CompositionRootTypeExtractor));
+            publicTypes.Add(typeof(CachedTypeExtractor));
+            publicTypes.Add(typeof(ImmutableList<>));
+            publicTypes.Add(typeof(KeyValue<,>));
+            publicTypes.Add(typeof(ImmutableHashTree<,>));
+            publicTypes.Add(typeof(ImmutableHashTable<,>));
+            publicTypes.Add(typeof(PerThreadScopeManagerProvider));
+            publicTypes.Add(typeof(Emitter));
+            publicTypes.Add(typeof(Instruction));
+            publicTypes.Add(typeof(Instruction<>));
+            publicTypes.Add(typeof(GetInstanceDelegate));
+            publicTypes.Add(typeof(ContainerOptions));
+            publicTypes.Add(typeof(CompositionRootAttributeExtractor));            
+            publicTypes.Add(typeof(PerLogicalCallContextScopeManagerProvider));
+            publicTypes.Add(typeof(LogicalThreadStorage<>));
         }
 
         /// <summary>
@@ -5485,7 +5489,7 @@ namespace Framework.LightInject.LightInject
                                                && !t.IsNestedPrivate()
                                                && !t.IsAbstract()
                                                && !Equals(t.GetAssembly(), typeof(string).GetAssembly())
-                                               && !IsCompilerGenerated(t)).Except(InternalTypes).ToArray();
+                                               && !IsCompilerGenerated(t)).Except(publicTypes).ToArray();
         }
 
         private static bool IsCompilerGenerated(Type type)
@@ -5497,7 +5501,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// A class that is responsible for instantiating and executing an <see cref="ICompositionRoot"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class CompositionRootExecutor : ICompositionRootExecutor
     {
         private readonly IServiceRegistry serviceRegistry;
@@ -5542,7 +5546,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// An assembly scanner that registers services based on the types contained within an <see cref="Assembly"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class AssemblyScanner : IAssemblyScanner
     {
         private readonly ITypeExtractor concreteTypeExtractor;
@@ -5651,7 +5655,7 @@ namespace Framework.LightInject.LightInject
             {
                 if (shouldRegister(interfaceType, implementingType))
                 {
-                    RegisterInternal(interfaceType, implementingType, serviceRegistry, lifetimeFactory());
+                    Registerpublic(interfaceType, implementingType, serviceRegistry, lifetimeFactory());
                 }
             }
 
@@ -5659,12 +5663,12 @@ namespace Framework.LightInject.LightInject
             {
                 if (shouldRegister(baseType, implementingType))
                 {
-                    RegisterInternal(baseType, implementingType, serviceRegistry, lifetimeFactory());
+                    Registerpublic(baseType, implementingType, serviceRegistry, lifetimeFactory());
                 }
             }
         }
 
-        private void RegisterInternal(Type serviceType, Type implementingType, IServiceRegistry serviceRegistry, ILifetime lifetime)
+        private void Registerpublic(Type serviceType, Type implementingType, IServiceRegistry serviceRegistry, ILifetime lifetime)
         {
             if (serviceType.IsGenericType() && serviceType.ContainsGenericParameters())
             {
@@ -5678,7 +5682,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Selects the properties that represents a dependency to the target <see cref="Type"/>.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PropertySelector : IPropertySelector
     {
         /// <summary>
@@ -5708,46 +5712,11 @@ namespace Framework.LightInject.LightInject
     }
 
     /// <summary>
-    /// Loads all assemblies from the application base directory that matches the given search pattern.
-    /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-    public class AssemblyLoader : IAssemblyLoader
-    {
-        /// <summary>
-        /// Loads a set of assemblies based on the given <paramref name="searchPattern"/>.
-        /// </summary>
-        /// <param name="searchPattern">The search pattern to use.</param>
-        /// <returns>A list of assemblies based on the given <paramref name="searchPattern"/>.</returns>
-        public IEnumerable<Assembly> Load(string searchPattern)
-        {
-            string directory = Path.GetDirectoryName(new Uri(typeof(ServiceContainer).Assembly.CodeBase).LocalPath);
-            if (directory != null)
-            {
-                string[] searchPatterns = searchPattern.Split('|');
-                foreach (string file in searchPatterns.SelectMany(sp => Directory.GetFiles(directory, sp)).Where(CanLoad))
-                {
-                    yield return Assembly.LoadFrom(file);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Indicates if the current <paramref name="fileName"/> represent a file that can be loaded.
-        /// </summary>
-        /// <param name="fileName">The name of the target file.</param>
-        /// <returns><b>true</b> if the file can be loaded, otherwise <b>false</b>.</returns>
-        protected virtual bool CanLoad(string fileName)
-        {
-            return true;
-        }
-    }
-
-    /// <summary>
     /// Defines an immutable representation of a key and a value.
     /// </summary>
     /// <typeparam name="TKey">The type of the key.</typeparam>
     /// <typeparam name="TValue">The type of the value.</typeparam>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public sealed class KeyValue<TKey, TValue>
     {
         /// <summary>
@@ -5776,7 +5745,7 @@ namespace Framework.LightInject.LightInject
     /// Represents a simple "add only" immutable list.
     /// </summary>
     /// <typeparam name="T">The type of items contained in the list.</typeparam>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public sealed class ImmutableList<T>
     {
         /// <summary>
@@ -5828,7 +5797,7 @@ namespace Framework.LightInject.LightInject
     /// </summary>
     /// <typeparam name="TKey">The type of the key.</typeparam>
     /// <typeparam name="TValue">The type of the value.</typeparam>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public sealed class ImmutableHashTable<TKey, TValue>
     {
         /// <summary>
@@ -5916,7 +5885,7 @@ namespace Framework.LightInject.LightInject
     /// </summary>
     /// <typeparam name="TKey">The type of the key.</typeparam>
     /// <typeparam name="TValue">The type of the value.</typeparam>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public sealed class ImmutableHashTree<TKey, TValue>
     {
         /// <summary>
@@ -6076,7 +6045,7 @@ namespace Framework.LightInject.LightInject
     /// <summary>
     /// Represents an MSIL instruction to be emitted into a dynamic method.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Instruction
     {
         /// <summary>
@@ -6116,7 +6085,7 @@ namespace Framework.LightInject.LightInject
     /// Represents an MSIL instruction to be emitted into a dynamic method.
     /// </summary>
     /// <typeparam name="T">The type of argument used in this instruction.</typeparam>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Instruction<T> : Instruction
     {
         /// <summary>
@@ -6151,7 +6120,7 @@ namespace Framework.LightInject.LightInject
     /// An abstraction of the <see cref="ILGenerator"/> class that provides information
     /// about the <see cref="Type"/> currently on the stack.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Emitter : IEmitter
     {
         private readonly ILGenerator generator;
@@ -6538,12 +6507,11 @@ namespace Framework.LightInject.LightInject
             return localBuilder;
         }
     }
-
     /// <summary>
     /// Provides storage per logical thread of execution.
     /// </summary>
     /// <typeparam name="T">The type of the value contained in this <see cref="LogicalThreadStorage{T}"/>.</typeparam>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    //[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class LogicalThreadStorage<T>
     {
         private readonly Func<T> valueFactory;
@@ -6558,7 +6526,7 @@ namespace Framework.LightInject.LightInject
         /// <param name="valueFactory">The value factory used to create an instance of <typeparamref name="T"/>.</param>
         public LogicalThreadStorage(Func<T> valueFactory)
         {
-            asyncLocal = new AsyncLocal<T>();
+            asyncLocal = new AsyncLocal<T>();            
             this.valueFactory = valueFactory;
         }
 
@@ -6580,7 +6548,7 @@ namespace Framework.LightInject.LightInject
                         asyncLocal.Value = valueFactory();
                     }
                     return asyncLocal.Value;
-                }
+                }                               
             }
         }
     }

@@ -11,17 +11,17 @@ namespace Framework.Core.DependencyContainer
 
         IQueryHandler<T, TReponse> ResolveQueryHandler<T, TReponse>() where T : IQuery where TReponse : IQueryResponse;
 
-        void Register<TService, TImplementation>() where TImplementation : TService;
+        void Register<TService, TImplementation>() where TImplementation : class, TService where TService : class;
 
-        T Resolve<T>();
+        T Resolve<T>() where T : class;
 
         IEnumerable<ISecurityRule<TMessage>> ResolveSecurityRules<TMessage>() where TMessage : IMessage;
 
         void RegisterCommandHandler<TCommand, TCommandHandler>() where TCommand : ICommand
-            where TCommandHandler : ICommandHandler<TCommand>;
+            where TCommandHandler : class, ICommandHandler<TCommand>;
 
         void RegisterSecurityRule<TMessage, TSecurityRule>() where TMessage : IAuthenticatedMessage
-            where TSecurityRule : ISecurityRule<TMessage>;
+            where TSecurityRule : class, ISecurityRule<TMessage>;
 
         void RegisterCommandDecorator<TCommand, TCommandDecorator>()
             where TCommand : ICommand
@@ -33,10 +33,10 @@ namespace Framework.Core.DependencyContainer
         //    where TCommandDecorator : ICommandDecorator<TCommand>;
 
         void RegisterQueryHandler<TQuery, TQueryHandler, TResponse>() where TQuery : IQuery
-            where TQueryHandler : IQueryHandler<TQuery, TResponse>
+            where TQueryHandler : class, IQueryHandler<TQuery, TResponse>
             where TResponse : IQueryResponse;
 
-        void RegisterScopeLifetimeObject<TService, TImplementation>() where TImplementation : TService;
+        void RegisterScopeLifetimeObject<TService, TImplementation>() where TImplementation : class, TService where TService : class;
 
         IDisposable BeginScope();
 

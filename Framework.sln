@@ -1,20 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{0FAE15A9-D9FC-4E00-BE6A-3BCB663217C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.LightInject", "Framework.LightInject\Framework.LightInject.csproj", "{78A6AF63-BFB4-462C-917C-E42B79C1788F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPackages", "NugetPackages", "{8D929890-AED8-4C0B-905B-650F3F85B1C1}"
-	ProjectSection(SolutionItems) = preProject
-		NugetProjects\Framework.Core.1.0.0.nuspec = NugetProjects\Framework.Core.1.0.0.nuspec
-		NugetProjects\Framework.Cqrs.1.0.0.nuspec = NugetProjects\Framework.Cqrs.1.0.0.nuspec
-		NugetProjects\Framework.EntityFramework.1.0.0.nuspec = NugetProjects\Framework.EntityFramework.1.0.0.nuspec
-		NugetProjects\Framework.LightInject.1.0..nuspec = NugetProjects\Framework.LightInject.1.0..nuspec
-		NugetProjects\Framework.LightInject.WebApi.1.0.0.nuspec = NugetProjects\Framework.LightInject.WebApi.1.0.0.nuspec
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Cqrs", "Framework.Cqrs\Framework.Cqrs.csproj", "{3A54D64E-BCCB-478A-B0D8-4920272843C1}"
 EndProject
@@ -65,36 +56,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{83838E5D-9B19-4AD0-8011-F8A86EA1366D} = {12F19C85-0029-454E-B914-9E1FDD89BAC6}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://gallantgeek.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Framework.Core\\Framework.Core.csproj
-		SccProjectName1 = Framework.Core
-		SccLocalPath1 = Framework.Core
-		SccProjectUniqueName2 = Framework.Cqrs\\Framework.Cqrs.csproj
-		SccProjectName2 = Framework.Cqrs
-		SccLocalPath2 = Framework.Cqrs
-		SccProjectUniqueName3 = Framework.EntityFramework\\Framework.EntityFramework.csproj
-		SccProjectName3 = Framework.EntityFramework
-		SccLocalPath3 = Framework.EntityFramework
-		SccProjectUniqueName4 = Framework.LightInject.WebApi\\Framework.LightInject.WebApi.csproj
-		SccProjectName4 = Framework.LightInject.WebApi
-		SccLocalPath4 = Framework.LightInject.WebApi
-		SccProjectUniqueName5 = Framework.LightInject\\Framework.LightInject.csproj
-		SccProjectName5 = Framework.LightInject
-		SccLocalPath5 = Framework.LightInject
-		SccProjectUniqueName6 = Tests\\Framework.Cqrs.Tests\\Framework.Cqrs.Tests.csproj
-		SccProjectTopLevelParentUniqueName6 = Framework.sln
-		SccProjectName6 = Tests/Framework.Cqrs.Tests
-		SccLocalPath6 = Tests\\Framework.Cqrs.Tests
-		SccProjectUniqueName7 = Framework.Security\\Framework.Security.csproj
-		SccProjectName7 = Framework.Security
-		SccLocalPath7 = Framework.Security
 	EndGlobalSection
 EndGlobal

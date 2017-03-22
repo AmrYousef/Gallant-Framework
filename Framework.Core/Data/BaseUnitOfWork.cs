@@ -21,7 +21,7 @@ namespace Framework.Core.Data
         }
 
         public TWriteRepository Repository<TWriteRepository, TEntity>()
-            where TWriteRepository : IWriteRepository<TEntity>
+            where TWriteRepository : class , IWriteRepository<TEntity>
             where TEntity : BaseEntity
         {
             var repo = _dependencyContainer.Resolve<TWriteRepository>();

@@ -1,6 +1,6 @@
 ﻿using Framework.Core.Data.Core;
 using Framework.Core.Domain;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Framework.EntityFramework

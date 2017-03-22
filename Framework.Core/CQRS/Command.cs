@@ -3,9 +3,9 @@ using Framework.Core.Securtiy;
 
 namespace Framework.Core.CQRS
 {
-    public abstract class Command : BaseAuthenticatedMessage, ICommand
+    public abstract class Command : BaseCommand, ICommand
     {
-        public Command(FrameworkClaimsIdentity identity) : base(identity)
+        public Command()
         {
         }
     }
