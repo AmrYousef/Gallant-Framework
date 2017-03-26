@@ -6,7 +6,7 @@ namespace Framework.EntityFramework
 {
     public abstract class BaseReadContext : BaseContext, IReadContext
     {
-        public BaseReadContext(string connectionName) : base(connectionName)
+        protected BaseReadContext(string connectionString) : base(connectionString)
         {
         }
 

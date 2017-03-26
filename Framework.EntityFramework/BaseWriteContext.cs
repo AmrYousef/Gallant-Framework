@@ -7,7 +7,7 @@ namespace Framework.EntityFramework
 {
     public abstract class BaseWriteContext : BaseContext, IWriteContext
     {
-        public BaseWriteContext(string connectionName) : base(connectionName)
+        protected BaseWriteContext(string connectionString) : base(connectionString)
         {
         }
 
