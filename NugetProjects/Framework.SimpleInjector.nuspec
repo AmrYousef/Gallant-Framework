@@ -7,9 +7,9 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Framework LightInject</description>
         <dependencies>
-          <dependency id="Framework.Core" Version="1.0.7" />
-          <dependency id="SimpleInjector" Version="3.3.2" />
-          <dependency id="SimpleInjector.Extensions.LifetimeScoping" Version="3.3.2" />
+          <dependency id="Framework.Core" version="1.0.7" />
+          <dependency id="SimpleInjector" version="3.3.2" />
+          <dependency id="SimpleInjector.Extensions.LifetimeScoping" version="3.3.2" />
         </dependencies>
     </metadata>
     <files>
