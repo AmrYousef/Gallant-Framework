@@ -20,7 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetProjects", "NugetProje
 		NugetProjects\Framework.Core.nuspec = NugetProjects\Framework.Core.nuspec
 		NugetProjects\Framework.Cqrs.nuspec = NugetProjects\Framework.Cqrs.nuspec
 		NugetProjects\Framework.EntityFramework.nuspec = NugetProjects\Framework.EntityFramework.nuspec
-		NugetProjects\Framework.LightInject.WebApi.nuspec = NugetProjects\Framework.LightInject.WebApi.nuspec
 		NugetProjects\Framework.SimpleInjector.nuspec = NugetProjects\Framework.SimpleInjector.nuspec
 	EndProjectSection
 EndProject
