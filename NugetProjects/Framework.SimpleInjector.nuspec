@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>Framework.LightInject</id>
+        <id>Framework.SimpleInjector</id>
         <version>1.0.0</version>
         <authors>Amr Yousef</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Framework LightInject</description>
+        <description>Framework SimpleInjector</description>
         <dependencies>
           <dependency id="Framework.Core" version="1.0.7" />
           <dependency id="SimpleInjector" version="3.3.2" />
