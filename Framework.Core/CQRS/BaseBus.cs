@@ -6,18 +6,18 @@ namespace Framework.Core.CQRS
 {
     public abstract class BaseBus
     {
-        protected IDependencyContainer DependencyContainer;
+        protected IDependencyContainer _dependencyContainer;
 
         public BaseBus(IDependencyContainer dependencyContainer)
         {
-            DependencyContainer = dependencyContainer;
+            _dependencyContainer = dependencyContainer;
         }
 
         public void CheckAuthorization<TMessage>(IMessage message) where TMessage : IMessage
         {
             if (message is IAuthenticatedMessage)
             {
-                var _securityRules = DependencyContainer.ResolveSecurityRules<TMessage>();
+                var _securityRules = _dependencyContainer.ResolveSecurityRules<TMessage>();
 
                 if (_securityRules != null)
                 {

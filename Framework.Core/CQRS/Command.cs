@@ -2,7 +2,7 @@
 
 namespace Framework.Core.CQRS
 {
-    public abstract class Command : BaseCommand, ICommand
+    public abstract class Command : BaseMessage, ICommand
     {
     }
 }
