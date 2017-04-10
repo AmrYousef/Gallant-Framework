@@ -11,7 +11,7 @@ namespace Framework.EntityFramework
         {
         }
 
-        public new IQueryable<T> Set<T>() where T : BaseEntity
+        public IQueryable<T> Set<T>() where T : BaseEntity
         {
             return base.Set<T>();
         }
@@ -31,7 +31,7 @@ namespace Framework.EntityFramework
         {
         }
 
-        public void Delete<T>(T deletedEntity) where T : BaseEntity
+        public virtual void Delete<T>(T deletedEntity) where T : BaseEntity
         {
             Entry(deletedEntity).State = EntityState.Deleted;
         }

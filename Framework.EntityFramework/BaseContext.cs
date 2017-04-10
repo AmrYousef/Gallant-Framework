@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Framework.EntityFramework
 {
-    public abstract class BaseContext : DbContext, IReadContext
+    public abstract class BaseContext : DbContext, IContext
     {
         private readonly string _connectionString;
 
@@ -17,11 +17,6 @@ namespace Framework.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
-        }
-
-        IQueryable<T> IReadContext.Set<T>()
-        {
-            return Set<T>();
         }
     }
 }
